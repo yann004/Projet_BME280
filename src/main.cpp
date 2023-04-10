@@ -7,14 +7,14 @@
 #include <ESPAsyncWebServer.h>
 #include <SPIFFS.h>
 #include <ArduinoJson.h>
-
+#include <AsyncElegantOTA.h>
 
 #define SEALEVELPRESSURE_HPA (1013.25)
 
 //Declaration de nos constantes
 
 const char* ssid = "M14"; // ssdi du reseau utilise
-const char* password = "KUMDDFML"; // mot de passe du reseau utilise
+const char* password = "KUMDDFML";// mot de passe du reseau utilise
 
 AsyncWebServer server(80); // Declartion serveur web
 
@@ -89,6 +89,9 @@ void setup() {
     request->send(response);
   });
 
+// initialisation OTA
+
+AsyncElegantOTA.begin(&server);
 
 // initialisation du serveur
 
