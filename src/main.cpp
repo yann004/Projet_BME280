@@ -60,6 +60,34 @@ void setup() {
     request->send(response);
   });
 
+// creation du fichier json contenant les donnees collectees du capteur
+
+  server.on("/data.json", HTTP_GET, [](AsyncWebServerRequest *request){
+    String json = "{";
+    float temperature = bme.readTemperature();
+    float Humidity = bme.readHumidity();
+    float pressure = bme.readPressure() / 100.0F;
+    float Altitude = bme.readAltitude(SEALEVELPRESSURE_HPA);
+    json += "\"temperature\":" + String(temperature) + ",";
+    json += "\"Humidity\":" + String(Humidity) + ",";
+    json += "\"pressure\":" + String(pressure) + ",";
+    json += "\"Altitude\":" + String(Altitude);
+    json += "}";
+    File file = SPIFFS.open("/data.json", FILE_WRITE);
+    if (!file) {
+      Serial.println("Failed to create file");
+      request->send(500, "text/plain", "Server Error");
+      return;
+    }
+    file.println(json);
+    file.close();
+
+    //recuperation fichier json par le serveur
+
+    AsyncWebServerResponse *response = request->beginResponse(200, "application/json", json);
+    response->addHeader("Access-Control-Allow-Origin", "*");
+    request->send(response);
+  });
 
 
 // initialisation du serveur
