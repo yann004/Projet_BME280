@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head class="header">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function updateData() {
+  $.getJSON("/data.json", function(data) {
+    $("#demo").text(data.temperature);
+    $("#demo1").text(data.Humidity);
+    $("#demo2").text(data.pressure);
+    $("#demo3").text(data.Altitude);
+  });
+}
+
+setInterval(updateData, 3000);
+
+    </script>
+    <style>
+     
+     .header { text-align: center; font-size: 40PX; background-color: white;}
+     .theme { text-align: left; padding: 40px; font-size: 40PX; color: rgb(245, 125, 13); }
+     .theme2 { text-align:right; padding: 40px; font-size: 40PX; color: rgb(245, 125, 13); }
+     .themea { text-align: left; padding: 40px; font-size: 40PX; color: rgb(65, 113, 234); }
+     .theme2a { text-align:right; padding: 40px; font-size: 40PX;  color: rgb(65, 113, 234); }
+     .themeb { text-align: left; padding: 40px; font-size: 40PX; color: #26B99A; }
+     .theme2b { text-align:right; padding: 40px; font-size: 40PX; color: #26B99A; }
+     .themec { text-align: left; padding: 40px; font-size: 40PX; color: rgb(98, 8, 106); }
+     .theme2c { text-align:right; padding: 40px; font-size: 40PX; color: rgb(98, 8, 106); }
+     .text { text-align: center;  height: 169,5px; font-size: 20PX; padding: 40px; }
+     .text2{font-weight: 600;font-size: 19px;height: 169,5px; text-align: center;padding: 40px;}
+     .unite { font-size: smaller;}
+     .container{display: table;margin: auto; background-color: white;}
+     .superscript{font-size: 17px;font-weight: 600;position: absolute;}
+     body{background-color:rgb(231, 105, 105); width: auto;}
+    </style>
+
+
+</head>
+
+<body>
+    
+    <div class="container">
+      <h1 class ="header">ESP8266 Weather</h1>
+    <h2 class ="header">Station</h2>
+        <div class="row">
+         <div class="theme col-3 bg-white">
+            <i class="bi bi-thermometer-half"></i>
+         </div>
+         <div class="text2 col-6 bg-white">
+            Temperature
+         </div>
+         <div class=" theme2  col-3 bg-white ">
+          <span id="demo"></span><span class='superscript'>&deg;C</span>
+        </div>
+        </div>
+        
+     
+    <div class="row">
+        <div class="themea col-3 bg-white">
+           <i class="bi bi-droplet-fill"></i>
+        </div>
+        <div class=" text2 col-6 bg-white">
+           Humidity
+        </div>
+        <div class="theme2a col-3 bg-white">
+         <span id="demo1"></span><span class='superscript'>%</span>
+       </div>
+       
+   </div> 
+   <div class="row">
+    <div class="themeb col-3 bg-white  ">
+      <svg  enable-background='new 0 0 40.542 40.541'height=40.541px id=Layer_1 version=1.1 viewBox='0 0 40.542 40.541'width=40.542px x=0px xml:space=preserve xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink y=0px><g><path d='M34.313,20.271c0-0.552,0.447-1,1-1h5.178c-0.236-4.841-2.163-9.228-5.214-12.593l-3.425,3.424
+         c-0.195,0.195-0.451,0.293-0.707,0.293s-0.512-0.098-0.707-0.293c-0.391-0.391-0.391-1.023,0-1.414l3.425-3.424
+         c-3.375-3.059-7.776-4.987-12.634-5.215c0.015,0.067,0.041,0.13,0.041,0.202v4.687c0,0.552-0.447,1-1,1s-1-0.448-1-1V0.25
+         c0-0.071,0.026-0.134,0.041-0.202C14.39,0.279,9.936,2.256,6.544,5.385l3.576,3.577c0.391,0.391,0.391,1.024,0,1.414
+         c-0.195,0.195-0.451,0.293-0.707,0.293s-0.512-0.098-0.707-0.293L5.142,6.812c-2.98,3.348-4.858,7.682-5.092,12.459h4.804
+         c0.552,0,1,0.448,1,1s-0.448,1-1,1H0.05c0.525,10.728,9.362,19.271,20.22,19.271c10.857,0,19.696-8.543,20.22-19.271h-5.178
+         C34.76,21.271,34.313,20.823,34.313,20.271z M23.084,22.037c-0.559,1.561-2.274,2.372-3.833,1.814
+         c-1.561-0.557-2.373-2.272-1.815-3.833c0.372-1.041,1.263-1.737,2.277-1.928L25.2,7.202L22.497,19.05
+         C23.196,19.843,23.464,20.973,23.084,22.037z'fill=#26B999 /></g></svg>
+    </div>
+    <div class=" text2 col-6 bg-white">
+       Pressure
+    </div>
+    <div class="theme2b col-3 bg-white">
+      <span id="demo2"></span><span class='superscript'>hPa</span>
+   </div>
+   
+</div> <div class="row">
+    <div class="themec col-3 bg-white">
+      <svg  enable-background='new 0 0 58.422 40.639'height=40.639px id=Layer_1 version=1.1 viewBox='0 0 58.422 40.639'width=58.422px x=0px xml:space=preserve xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink y=0px><g><path d='M58.203,37.754l0.007-0.004L42.09,9.935l-0.001,0.001c-0.356-0.543-0.969-0.902-1.667-0.902
+         c-0.655,0-1.231,0.32-1.595,0.808l-0.011-0.007l-0.039,0.067c-0.021,0.03-0.035,0.063-0.054,0.094L22.78,37.692l0.008,0.004
+         c-0.149,0.28-0.242,0.594-0.242,0.934c0,1.102,0.894,1.995,1.994,1.995v0.015h31.888c1.101,0,1.994-0.893,1.994-1.994
+         C58.422,38.323,58.339,38.024,58.203,37.754z'fill=#955BA5 /><path d='M19.704,38.674l-0.013-0.004l13.544-23.522L25.13,1.156l-0.002,0.001C24.671,0.459,23.885,0,22.985,0
+         c-0.84,0-1.582,0.41-2.051,1.038l-0.016-0.01L20.87,1.114c-0.025,0.039-0.046,0.082-0.068,0.124L0.299,36.851l0.013,0.004
+         C0.117,37.215,0,37.62,0,38.059c0,1.412,1.147,2.565,2.565,2.565v0.015h16.989c-0.091-0.256-0.149-0.526-0.149-0.813
+         C19.405,39.407,19.518,39.019,19.704,38.674z'fill=#955BA5 /></g></svg>
+    </div>
+    <div class=" text2 col-6 bg-white">
+      Altitude
+    </div>
+    <div class="theme2c col-3 bg-white">
+      <span id="demo3"></span><span class='superscript'>m</span>
+   </div>
+</div> 
+    </div>  
+    </div> 
+   
+</body>
+</html>
